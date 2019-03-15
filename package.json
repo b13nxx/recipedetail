@@ -1,0 +1,16 @@
+{
+  "name": "recipedetail",
+  "version": "1.0.0",
+  "description": "Frontend Task",
+  "main": "index.js",
+  "scripts": {
+    "stylus": "stylus -w src/css/main.styl -o src/css/main.css",
+    "serve": "browser-sync start --server --files \"**/*.(css|js|html)\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b8kkyn/recipedetail.git"
+  },
+  "author": "Bahrican AKKOYUN <bahricanakkoyun@gmail.com>",
+  "license": "MIT"
+}
