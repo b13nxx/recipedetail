@@ -5,7 +5,7 @@ h1 {
   border-bottom: 1px solid #ba0c2f;
 }
 h2 {
-  margin: -8px 0 10px 0;
+  margin: 0;
   font-family: 'Cabin', sans-serif;
   font-weight: 500;
 }
@@ -19,66 +19,202 @@ body {
   box-sizing: border-box;
 }
 .heading {
-  margin-bottom: 20px;
+  margin: -4px 0 16px 0;
+  display: flex;
+  align-items: center;
+}
+.heading i {
+  margin-right: 10px;
+  font-size: 24px;
+}
+.top {
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column-reverse;
 }
-.heading .left .list p {
-  margin: 5px 0;
-  padding-bottom: 5px;
-  border-bottom: 0.5px solid rgba(0,0,0,0.22);
-  font-family: 'Inconsolata', monospace;
-  font-size: 17px;
-  color: rgba(0,0,0,0.68);
+.top .left {
+  min-width: 50%;
 }
-.heading .left .list p:hover {
-  color: #000;
-  cursor: pointer;
-}
-.heading .right {
-  margin: 0 0 20px 0;
+.top .left .ingredient-list {
   display: flex;
   flex-direction: column;
 }
-.heading .right img {
-  margin-bottom: 20px;
-  width: 100%;
-  opacity: 0.9;
+.top .left .ingredient-list .item {
+  padding: 6px 0;
+  position: relative;
+  border-bottom: 0.5px solid rgba(0,0,0,0.22);
+  font-family: 'Inconsolata', monospace;
+  font-size: 17px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
 }
-.heading .right .statistics {
+.top .left .ingredient-list .item .title {
+  color: rgba(0,0,0,0.68);
+  flex-grow: 1;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
-.heading .right .statistics div {
+.top .left .ingredient-list .item .title:hover {
+  color: #000;
+  cursor: pointer;
+}
+.top .left .ingredient-list .item .title i {
+  margin-left: 10px;
+  transition: 0.1s linear;
+  transform-origin: 70% 50%;
+  opacity: 0.8;
+}
+.top .left .ingredient-list .item .title i.rotated {
+  transform: rotate(-90deg);
+}
+.top .left .ingredient-list .item .content {
+  margin-top: 0;
+  height: 0;
+  opacity: 0;
+}
+.top .left .ingredient-list .item .content.visible {
+  margin-top: 10px;
+  height: auto;
+  opacity: 1;
+}
+.top .left .ingredient-list .item .content .product-list {
+  max-height: 305px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  overflow-y: auto;
+}
+.top .left .ingredient-list .item .content .product-list::-webkit-scrollbar-button {
+  display: none;
+  height: 13px;
+  border-radius: 0px;
+  background-color: #aaa;
+}
+.top .left .ingredient-list .item .content .product-list::-webkit-scrollbar-button:hover {
+  background-color: #aaa;
+}
+.top .left .ingredient-list .item .content .product-list::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+.top .left .ingredient-list .item .content .product-list::-webkit-scrollbar-thumb:hover {
+  background-color: #ccc;
+}
+.top .left .ingredient-list .item .content .product-list::-webkit-scrollbar-track {
+  background-color: #efefef;
+  border-radius: 4px;
+}
+.top .left .ingredient-list .item .content .product-list::-webkit-scrollbar-track:hover {
+  background-color: #efefef;
+}
+.top .left .ingredient-list .item .content .product-list::-webkit-scrollbar {
+  width: 8px;
+}
+.top .left .ingredient-list .item .content .product-list .product {
+  margin: 5px;
+  padding: 5px;
+  min-width: 100px;
+  width: 100px;
+  max-width: 100px;
+  min-height: 132.2px;
+  height: 132.2px;
+  max-height: 132.2px;
+  border: 1px solid rgba(0,0,0,0.17);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.top .left .ingredient-list .item .content .product-list .product .see-more-button {
+  padding: 10px;
+  width: 60%;
+  color: #fff;
+  background-color: #ba0c2f;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+.top .left .ingredient-list .item .content .product-list .product .see-more-button:active {
+  background-color: rgba(186,12,47,0.8);
+}
+.top .left .ingredient-list .item .content .product-list .product .see-more-button i {
+  top: 1px;
+  position: relative;
+}
+.top .left .ingredient-list .item .content .product-list .product img {
+  width: 70%;
+}
+.top .left .ingredient-list .item .content .product-list .product .product-price {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.heading .right .statistics div p {
+.top .left .ingredient-list .item .content .product-list .product .product-price .old-price {
+  margin-bottom: 2px;
+  color: rgba(0,0,0,0.68);
+}
+.top .left .ingredient-list .item .content .product-list .product .product-price .old-price sub {
+  text-decoration: line-through;
+}
+.top .left .ingredient-list .item .content .product-list .product .product-price .final-price .currency {
+  margin-right: -5px;
+}
+.top .left .ingredient-list .item .content .product-list .product .product-price .final-price span {
+  font-size: 20px;
+}
+.top .left .ingredient-list .item .content .product-list .product .product-price .final-price sup {
+  margin-left: -6px;
+  top: 3.5px;
+  position: relative;
+}
+.top .right {
+  margin: 0 0 30px 0;
+  display: flex;
+  flex-direction: column;
+}
+.top .right img {
+  margin-bottom: 20px;
+  width: 100%;
+  opacity: 0.9;
+}
+.top .right .statistics {
+  display: flex;
+  justify-content: space-between;
+}
+.top .right .statistics div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.top .right .statistics div p {
   margin: 5px 0;
   font-family: 'Inconsolata', monospace;
   font-size: 17px;
 }
-.heading .right .statistics div p:first-child {
+.top .right .statistics div p:first-child {
   font-weight: 700;
   color: #ba0c2f;
 }
-.content ol {
+.bottom ol {
   margin: 0 0 0 -14px;
 }
-.content ol li {
+.bottom ol li {
   font-family: 'Inconsolata', monospace;
   font-size: 17px;
 }
-.content ol li:not(:last-child) {
+.bottom ol li:not(:last-child) {
   margin-bottom: 20px;
 }
 @media only screen and (min-width: 580px) {
-  .heading .right {
+  .top .right {
     align-items: center;
   }
-  .heading .right img,
-  .heading .right .statistics {
+  .top .right img,
+  .top .right .statistics {
     width: 80%;
   }
 }
@@ -86,15 +222,14 @@ body {
   body {
     margin: 80px auto 40px;
   }
-  .heading {
+  .top {
     flex-direction: row;
   }
-  .heading .right {
+  .top .right {
     margin: 0 0 0 30px;
-    justify-content: center;
   }
-  .heading .right img,
-  .heading .right .statistics {
+  .top .right img,
+  .top .right .statistics {
     width: 100%;
   }
 }

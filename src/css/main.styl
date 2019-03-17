@@ -5,7 +5,7 @@ h1
   border-bottom 1px solid #ba0c2f
 
 h2
-  margin -8px 0 10px 0
+  margin 0
   font-family 'Cabin', sans-serif
   font-weight 500
 
@@ -19,26 +19,162 @@ body
   box-sizing border-box
 
 .heading
-  margin-bottom 20px
+  margin -4px 0 16px 0
+  display flex
+  align-items center
+
+  i
+    margin-right 10px
+    font-size 24px
+
+.top
+  margin-bottom 30px
   display flex
   flex-direction column-reverse
 
   .left
-    .list
-      p
-        margin 5px 0
-        padding-bottom 5px
+    min-width 50%
+
+  .left
+    .ingredient-list
+      display flex
+      flex-direction column
+
+      .item
+        padding 6px 0
+        position relative
         border-bottom 0.5px solid rgba(0, 0, 0, 0.22)
         font-family 'Inconsolata', monospace
         font-size 17px
-        color rgba(0, 0, 0, 0.68)
+        display flex
+        flex-direction column
+        z-index 1
 
-        &:hover
-          color #000
-          cursor pointer
+        .title
+          color rgba(0, 0, 0, 0.68)
+          flex-grow 1
+          display flex
+          justify-content space-between
+          align-items center
+
+          &:hover
+            color #000
+            cursor pointer
+
+          i
+            margin-left 10px
+            transition 0.1s linear
+            transform-origin 70% 50%
+            opacity 0.8
+
+            &.rotated
+              transform rotate(-90deg)
+
+        .content
+          margin-top 0
+          height 0
+          opacity 0
+
+          &.visible
+            margin-top 10px
+            height auto
+            opacity 1
+
+          .product-list
+            max-height 305px
+            display flex
+            justify-content center
+            flex-wrap wrap
+            overflow-y auto
+
+            &::-webkit-scrollbar-button
+              display none
+              height 13px
+              border-radius 0px
+              background-color #aaa
+
+              &:hover
+                background-color #aaa
+
+            &::-webkit-scrollbar-thumb
+              background-color #cc
+              border-radius 4px
+
+              &:hover
+                background-color #ccc
+
+            &::-webkit-scrollbar-track
+              background-color #efefef
+              border-radius 4px
+
+              &:hover
+                background-color #efefef
+
+            &::-webkit-scrollbar
+              width 8px
+
+            .product
+              margin 5px
+              padding 5px
+              min-width 100px
+              width 100px
+              max-width 100px
+              min-height 132.2px
+              height 132.2px
+              max-height 132.2px
+              border 1px solid rgba(0, 0, 0, 0.17)
+              display flex
+              flex-direction column
+              justify-content space-between
+              align-items center
+
+              .see-more-button
+                padding 10px
+                width 60%
+                color #fff
+                background-color #ba0c2f
+                display flex
+                justify-content space-around
+                align-items center
+                cursor pointer
+                user-select none
+
+                &:active
+                  background-color rgba(186, 12, 47, 0.8)
+
+                i
+                  top 1px
+                  position relative
+
+              img
+                width 70%
+
+              .product-price
+                display flex
+                flex-direction column
+                align-items center
+
+                .old-price
+                  margin-bottom 2px
+                  color rgba(0, 0, 0, 0.68)
+
+                  sub
+                    text-decoration line-through
+
+                .final-price
+                  .currency
+                    margin-right -5px
+
+                  span
+                    font-size 20px
+
+                  sup
+                    margin-left -6px
+                    top 3.5px
+                    position relative
 
   .right
-    margin 0 0 20px 0
+    margin 0 0 30px 0
     display flex
     flex-direction column
 
@@ -65,7 +201,7 @@ body
             font-weight 700
             color #ba0c2f
 
-.content
+.bottom
   ol
     margin 0 0 0 -14px
 
@@ -77,7 +213,7 @@ body
         margin-bottom 20px
 
 @media only screen and (min-width: 580px)
-  .heading
+  .top
     .right
       align-items center
 
@@ -88,12 +224,11 @@ body
   body
     margin 80px auto 40px
 
-  .heading
+  .top
     flex-direction row
 
     .right
       margin 0 0 0 30px
-      justify-content center
 
       img, .statistics
         width 100%
