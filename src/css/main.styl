@@ -4,7 +4,7 @@ h1
   font-family 'Thasadith', sans-serif
   border-bottom 1px solid #ba0c2f
 
-h2
+h2, h3
   margin 0
   font-family 'Cabin', sans-serif
   font-weight 500
@@ -17,6 +17,172 @@ body
   box-shadow 0 0 10px 0 rgba(0, 0, 0, 0.75)
   border-radius 5px
   box-sizing border-box
+
+  .cart-button
+    margin-top -15px
+    padding 10px
+    right 30px
+    position fixed
+    z-index 2
+    font-size 24px
+    color #fff
+    background-color #ba0c2f
+    cursor pointer
+
+    &:active
+      background-color #e20f39
+
+  .cart-container
+    margin-top 60px
+    padding 10px
+    width 260px
+    height 400px
+    right -290px
+    position fixed
+    z-index 2
+    background-color #fff
+    box-shadow 0 0 10px 0 rgba(0, 0, 0, 0.75)
+    display flex
+    flex-direction column
+    justify-content space-between
+
+    &.visible
+      right 0px
+
+    & .cart-content
+      margin-top 15px
+      padding-right 8px
+      overflow-y auto
+      flex-grow 1
+
+      &::-webkit-scrollbar-button
+        display none
+        height 13px
+        border-radius 0px
+        background-color #aaa
+
+        &:hover
+          background-color #aaa
+
+      &::-webkit-scrollbar-thumb
+        background-color #cc
+        border-radius 4px
+
+        &:hover
+          background-color #ccc
+
+      &::-webkit-scrollbar-track
+        background-color #efefef
+        border-radius 4px
+
+        &:hover
+          background-color #efefef
+
+      &::-webkit-scrollbar
+        width 8px
+
+      & .no-item
+        font-family 'Inconsolata', monospace
+        font-size 14px
+        display none
+
+        &.visible
+          display block
+
+      & .items .item
+        display flex
+        justify-content space-between
+        align-items center
+
+        &:not(:last-child)
+          margin-bottom 8px
+
+        &:hover
+          & .title, & .count, & .price
+            color #000
+
+        & .title, & .count, & .price
+          font-family 'Inconsolata', monospace
+          color rgba(0, 0, 0, 0.68)
+
+        & .title, & .count
+          margin-right 10px
+          font-size 14px
+
+        & .count, & .price
+          text-align right
+
+        & .remove-item-button
+          margin-right 10px
+          padding 5px
+          font-size 12px
+          color #fff
+          background-color #ba0c2f
+          cursor pointer
+
+          &:active
+            background-color #e20f39
+
+        & .title
+          min-width 100px
+          width 100px
+          max-width 100px
+
+        & .count
+          min-width 24px
+          width 24px
+          max-width 24px
+
+        & .price
+          min-width 60.5px
+          width 60.5px
+          max-width 60.5px
+          white-space nowrap
+
+          .currency
+            margin-right 5px
+
+          span
+            font-size 20px
+
+          sup
+            margin-left 2px
+            top 2.5px
+            position relative
+
+    & .footer
+      margin-top 15px
+      display none
+      justify-content flex-end
+      align-items center
+
+      &.visible
+        display flex
+
+      & .total-price
+        margin-right 10px
+        font-size 14px
+
+      & .order-button
+        padding 8px 5px
+        font-family 'Inconsolata', monospace
+        font-size 14px
+        color #fff
+        background-color #ba0c2f
+        display flex
+        align-items center
+        cursor pointer
+        user-select none
+
+        &:active
+          background-color #e20f39
+
+        & span
+          bottom 1px
+          position relative
+
+        & i
+          margin-left 5px
 
 .heading
   margin -4px 0 16px 0
@@ -31,9 +197,6 @@ body
   margin-bottom 30px
   display flex
   flex-direction column-reverse
-
-  .left
-    min-width 50%
 
   .left
     .ingredient-list
@@ -81,7 +244,7 @@ body
             opacity 1
 
           .product-list
-            max-height 305px
+            max-height 364px
             display flex
             justify-content center
             flex-wrap wrap
@@ -119,32 +282,40 @@ body
               min-width 100px
               width 100px
               max-width 100px
-              min-height 132.2px
-              height 132.2px
-              max-height 132.2px
+              min-height 160px
+              height 160px
+              max-height 160px
               border 1px solid rgba(0, 0, 0, 0.17)
               display flex
               flex-direction column
               justify-content space-between
               align-items center
 
-              .see-more-button
-                padding 10px
-                width 60%
-                color #fff
-                background-color #ba0c2f
+              .actions
+                width 100%
                 display flex
-                justify-content space-around
+                justify-content space-between
                 align-items center
-                cursor pointer
-                user-select none
-
-                &:active
-                  background-color rgba(186, 12, 47, 0.8)
 
                 i
-                  top 1px
-                  position relative
+                  padding 5px
+                  font-size 8px
+                  color #fff
+                  background-color #ba0c2f
+                  cursor pointer
+
+                  &:active
+                    background-color #e20f39
+
+                  &.remove-from-card-button, ^[7] .count
+                    visibility hidden
+
+                    &.visible
+                      visibility visible
+
+                .count
+                  font-size 14px
+                  color rgba(0, 0, 0, 0.68)
 
               img
                 width 70%
@@ -170,11 +341,30 @@ body
 
                   sup
                     margin-left -6px
-                    top 3.5px
+                    top 2.5px
                     position relative
+
+              .see-more-button
+                padding 10px
+                width 60%
+                color #fff
+                background-color #ba0c2f
+                display flex
+                justify-content space-around
+                align-items center
+                cursor pointer
+                user-select none
+
+                &:active
+                  background-color #e20f39
+
+                i
+                  top 1px
+                  position relative
 
   .right
     margin 0 0 30px 0
+    min-width 40%
     display flex
     flex-direction column
 
@@ -202,6 +392,9 @@ body
             color #ba0c2f
 
 .bottom
+  position relative
+  z-index 1
+
   ol
     margin 0 0 0 -14px
 
