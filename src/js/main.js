@@ -266,9 +266,15 @@ $(function () {
 
   $('.cart-button').on('click', function () {
     if (!$('.cart-container').hasClass('visible')) {
+      $(this).animate(
+        {
+          right: 234
+        },
+        200
+      )
       $('.cart-container').animate(
         {
-          right: 0
+          right: -1
         },
         200,
         function () {
@@ -277,9 +283,18 @@ $(function () {
         }
       )
     } else {
+      $(this).animate(
+        {
+          right: 15
+        },
+        200,
+        function () {
+          $(this).removeAttr('style')
+        }
+      )
       $('.cart-container').animate(
         {
-          right: -290
+          right: -220
         },
         200,
         function () {
