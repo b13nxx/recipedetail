@@ -19,9 +19,8 @@ body
   box-sizing border-box
 
   .cart-button
-    margin-top 16px
     padding 10px
-    right 15px
+    right 0px
     position fixed
     z-index 2
     font-size 24px
@@ -33,11 +32,10 @@ body
       background-color #e20f39
 
   .cart-container
-    margin-top 60px
     padding 10px
     width 260px
     height 400px
-    right -220px
+    right -282px
     position fixed
     z-index 2
     background-color #fff
@@ -377,7 +375,7 @@ body
       display flex
       justify-content space-between
 
-      div
+      div:not(.serving)
         display flex
         flex-direction column
         align-items center
@@ -390,6 +388,28 @@ body
           &:first-child
             font-weight 700
             color #ba0c2f
+
+      & .serving
+        display flex
+        align-items center
+
+        & select, & .count
+          margin-right 5px
+          display none
+
+          &.visible
+            display block
+
+        & .edit-serving-button
+          margin-left 5px
+          padding 5px
+          font-size 10px
+          color #fff
+          background-color #ba0c2f
+          cursor pointer
+
+          &:active
+            background-color #e20f39
 
 .bottom
   position relative

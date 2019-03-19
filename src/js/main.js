@@ -268,7 +268,7 @@ $(function () {
     if (!$('.cart-container').hasClass('visible')) {
       $(this).animate(
         {
-          right: 234
+          right: 281
         },
         200
       )
@@ -276,7 +276,7 @@ $(function () {
         {
           right: -1
         },
-        200,
+        500,
         function () {
           $(this).addClass('visible')
           $(this).removeAttr('style')
@@ -285,11 +285,11 @@ $(function () {
     } else {
       $(this).animate(
         {
-          right: 15
+          right: 0
         },
-        200,
+        500,
         function () {
-          $(this).removeAttr('style')
+          // $(this).removeAttr('style')
         }
       )
       $('.cart-container').animate(
@@ -302,6 +302,41 @@ $(function () {
           $(this).removeAttr('style')
         }
       )
+    }
+  })
+
+  $('.edit-serving-button').on('click', function () {
+    let $parent = $(this).parent()
+
+    if ($(this).hasClass('fa-pen')) {
+      $parent.find('.count').removeClass('visible')
+      $parent.find('select').addClass('visible')
+      $(this)
+        .removeClass('fa-pen')
+        .addClass('fa-check')
+    } else {
+      let desiredPerson = parseFloat($parent.find('select option:selected').text())
+      let currentPerson = parseFloat($parent.find('.count').text())
+      let ratio = desiredPerson / currentPerson
+
+      $parent.find('select').removeClass('visible')
+      $parent.find('.count').text(desiredPerson)
+      $parent.find('.count').addClass('visible')
+
+      $(this)
+        .removeClass('fa-check')
+        .addClass('fa-pen')
+
+      let value
+      $('.ingredient-list .item .title span').each(function () {
+        value = (parseFloat($(this).text()) * ratio).toFixed(2).split('.')
+
+        if (!parseInt(value[1])) {
+          value = [value[0]]
+        }
+
+        $(this).text(value.join('.'))
+      })
     }
   })
 })
